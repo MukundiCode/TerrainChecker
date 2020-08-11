@@ -7,7 +7,7 @@ public class terrainMinima{
    
    public static void main(String args[])throws FileNotFoundException{
       //The first step is to take in the file
-      String fileName = "test.txt";
+      String fileName = "large_in.txt";
       Scanner input = new Scanner(System.in);
       Scanner fileIn = new Scanner(new File(fileName));
       Scanner firstLine = new Scanner(fileIn.nextLine());
@@ -29,6 +29,7 @@ public class terrainMinima{
       int counter = 0;
       for (int z=1;z< numRows - 1;z++){
          for(int b =1;b< numCol -1;b++){
+            //System.out.println("Checking for grid "+terrain[z][b]);
             if(isMinima(terrain[z][b], terrain) == true){
                counter++;
                System.out.println(terrain[z][b]);
@@ -39,6 +40,7 @@ public class terrainMinima{
    }
       
    public static boolean isMinima(grid g, grid[][] a){
+      float[] diff = new float[8];
       boolean minima = true;
       int r = g.p.row;
       int c = g.p.column;
@@ -46,14 +48,21 @@ public class terrainMinima{
       grid[] list = {a[r-1][c-1], a[r-1][c], a[r-1][c+1], a[r][c+1], a[r+1][c+1], a[r+1][c], a[r+1][c-1], a[r][c-1]};
       //checking if this grid is a minima
       for (int i=0; i<8 ;i++){
-         if (list[i].height - g.height < 0.01){
+         if (list[i].height < g.height + 0.01){
             minima = false;
             break;
             }
          else{
+            float hh = (float)0.01;
+            diff[i] = list[i].height - g.height + hh;
             continue;
          }
          }
+      if (minima == true){
+         for(int x= 0;x<8;x++){
+            System.out.println(diff[x]);
+         }
+      }
       return minima;
       }
       
