@@ -17,7 +17,7 @@ public class terrainParallel{
       for(int x = 0;x<numRows;x++){
          Scanner line = new Scanner(fileIn.nextLine());
          for(int y = 0;y<numCol;y++){
-            float height = Float.parseFloat(line.next());
+            double height = Double.parseDouble(line.next());
             grid g = new grid(height,x,y);
             terrain[x][y] = g;
             }

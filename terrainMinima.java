@@ -18,10 +18,12 @@ public class terrainMinima{
       for(int x = 0;x<numRows;x++){
          Scanner line = new Scanner(fileIn.nextLine());
          for(int y = 0;y<numCol;y++){
-            float height = Float.parseFloat(line.next());
+            double height = Double.parseDouble(line.next());
             grid g = new grid(height,x,y);
             terrain[x][y] = g;
+            //System.out.print(terrain[x][y].height+" ");  //test
             }
+         //System.out.println();
          }
       //checking for minimas
       long StartTime = System.currentTimeMillis();
@@ -37,11 +39,11 @@ public class terrainMinima{
       }
       System.out.print(counter);
       long EndTime = System.currentTimeMillis();
-      System.out.println("Time taken is: "+EndTime - StartTime+"milliseconds");
+      System.out.println("Time taken is: "+(EndTime - StartTime)+"milliseconds");
    }
       
    public static boolean isMinima(grid g, grid[][] a){
-      float[] diff = new float[8];
+      double[] diff = new double[8];
       boolean minima = true;
       int r = g.p.row;
       int c = g.p.column;
@@ -54,7 +56,7 @@ public class terrainMinima{
             break;
             }
          else{
-            float hh = (float)0.01;
+            double hh = 0.01;
             diff[i] = list[i].height - g.height + hh;
             continue;
          }
