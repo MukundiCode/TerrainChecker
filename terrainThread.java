@@ -1,6 +1,8 @@
 import java.util.*;
 public class terrainThread extends java.lang.Thread{
    
+   static int SEQUENTIAL_CUTOFF = 600;
+   public static int NUM_OF_THREADS = 0;
    public ArrayList<grid> results;
    public int start;
    public int end;
@@ -13,20 +15,37 @@ public class terrainThread extends java.lang.Thread{
       this.end = end;
       this.numCol = numCol;
       results = new ArrayList<grid>();
+      NUM_OF_THREADS++;
+      //System.out.println("Thread number: "+NUM_OF_THREADS+"created");
    }
    //overiding run
    public void run(){
-      int counter = 0;
-      for (int z=this.start+1;z< end-1;z++){
-         for(int b =1;b< numCol -1;b++){
-            //System.out.println("Checking for grid "+terrain[z][b]);
-            if(terrainMinima.isMinima(terrain[z][b], terrain) == true){
-               counter++;
-               System.out.println(terrain[z][b]);
+      //Stopping condition for divide and conquer 
+      if(end-start < SEQUENTIAL_CUTOFF){
+         int counter = 0;
+         for (int z=this.start+1;z< end-1;z++){
+            for(int b =1;b< numCol -1;b++){
+               //System.out.println("Checking for grid "+terrain[z][b]);
+               if(terrainMinima.isMinima(terrain[z][b], terrain) == true){
+                  counter++;
+                  System.out.println(terrain[z][b]);
+               }
             }
          }
       }
-      //System.out.println(counter);
+      else{
+         try{
+            terrainThread top = new terrainThread(terrain,start,(start+end)/2,numCol);
+            terrainThread bottom = new terrainThread(terrain,(start+end)/2,end,numCol);
+            top.start();
+            bottom.run();
+            top.join();
+         }
+         catch (InterruptedException e) {
+			   e.printStackTrace();
+		   }
+
+      }
    }
    
 }

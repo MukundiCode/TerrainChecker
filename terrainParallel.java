@@ -25,9 +25,10 @@ public class terrainParallel{
       //creating the threads
       try{
          long StartTime = System.currentTimeMillis();
-         runThreads(6,terrain,numRows,numCol);
+         runThreads(1,terrain,numRows,numCol);
          long EndTime = System.currentTimeMillis();
          System.out.println("Time taken was: "+(EndTime - StartTime)+" milliseconds");
+         System.out.println("The total number of threads is "+terrainThread.NUM_OF_THREADS);
          }
       catch (InterruptedException e) {
 			// TODO Auto-generated catch block
