@@ -2,11 +2,11 @@ import java.util.*;
 /* The grid class containts one grid box
 */
 public class grid {
-   public double height;
+   public float height;
    public position p;
    public ArrayList<position> neighbors;
    
-   public grid(double height ,int r,int c){
+   public grid(float height ,int r,int c){
       this.height = height;
       this.p = new position(r,c);
       this.neighbors = new ArrayList<position>();

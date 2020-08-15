@@ -8,6 +8,6 @@ public class position{
       }
       
    public String toString(){
-      return Integer.toString(this.row) + ":" + Integer.toString(this.column);
+      return Integer.toString(this.row) + " " + Integer.toString(this.column);
       }
 }

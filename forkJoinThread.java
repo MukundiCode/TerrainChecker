@@ -4,9 +4,10 @@ import java.util.*;
 import java.util.concurrent.RecursiveAction;
 public class forkJoinThread extends RecursiveAction {
 
-   static int SEQUENTIAL_CUTOFF = 200;
+   static int SEQUENTIAL_CUTOFF = 250;
    public static int NUM_OF_THREADS = 0;
-   public ArrayList<grid> results;
+   public static ArrayList<grid> results;
+   public static int COUNTER = 0;
    public int start;
    public int end;
    public int numCol;
@@ -25,13 +26,11 @@ public class forkJoinThread extends RecursiveAction {
    public void compute(){
       //Stopping condition for divide and conquer 
       if(end-start < SEQUENTIAL_CUTOFF){
-         int counter = 0;
          for (int z=this.start+1;z< end-1;z++){
             for(int b =1;b< numCol -1;b++){
-               //System.out.println("Checking for grid "+terrain[z][b]);
                if(terrainMinima.isMinima(terrain[z][b], terrain) == true){
-                  counter++;
-                  System.out.println(terrain[z][b]);
+                  this.COUNTER++;
+                  results.add(terrain[z][b]);
                }
             }
          }

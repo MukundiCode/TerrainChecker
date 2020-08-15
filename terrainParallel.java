@@ -6,7 +6,7 @@ public class terrainParallel{
 
    public static void main(String args[])throws FileNotFoundException{
       //The first step is to take in the file
-      String fileName = "large_in.txt";
+      String fileName = "med_in.txt";
       Scanner input = new Scanner(System.in);
       Scanner fileIn = new Scanner(new File(fileName));
       Scanner firstLine = new Scanner(fileIn.nextLine());
@@ -14,10 +14,10 @@ public class terrainParallel{
       int numCol = firstLine.nextInt();
       terrain = new grid[numRows][numCol];
       //i have created the 2d array, now to create objects and put them in the array
+      Scanner line = new Scanner(fileIn.nextLine());
       for(int x = 0;x<numRows;x++){
-         Scanner line = new Scanner(fileIn.nextLine());
          for(int y = 0;y<numCol;y++){
-            double height = Double.parseDouble(line.next());
+            float height = Float.parseFloat(line.next());
             grid g = new grid(height,x,y);
             terrain[x][y] = g;
             }
@@ -28,7 +28,9 @@ public class terrainParallel{
          runThreads(1,terrain,numRows,numCol);
          long EndTime = System.currentTimeMillis();
          System.out.println("Time taken was: "+(EndTime - StartTime)+" milliseconds");
-         System.out.println("The total number of threads is "+terrainThread.NUM_OF_THREADS);
+         System.out.println("The total number of threads was "+terrainThread.NUM_OF_THREADS);
+         System.out.println(terrainThread.COUNTER);
+         terrainThread.results.forEach((n) -> System.out.println(n));
          }
       catch (InterruptedException e) {
 			// TODO Auto-generated catch block
