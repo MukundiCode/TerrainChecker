@@ -9,7 +9,7 @@ public class terrainMinima{
    
    public static void main(String args[])throws FileNotFoundException{
       //The first step is to take in the file
-      String fileName = args[0];
+      String fileName = "med_in.txt";
       Scanner input = new Scanner(System.in);
       Scanner fileIn = new Scanner(new File(fileName));
       Scanner firstLine = new Scanner(fileIn.nextLine());
@@ -40,10 +40,9 @@ public class terrainMinima{
          }
       }
       long EndTime = System.currentTimeMillis();
-//      System.out.println("Time taken was: "+(EndTime - StartTime)+"milliseconds");
-      System.out.println((EndTime - StartTime)+","+counter);
-    //  System.out.println(counter);
-    //  results.forEach((n) -> System.out.println(n));
+      System.out.println("Time taken was: "+(EndTime - StartTime)+"milliseconds");
+      System.out.println(counter);
+      results.forEach((n) -> System.out.println(n));
    }
       
    public static boolean isMinima(grid g, grid[][] a){

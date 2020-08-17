@@ -27,11 +27,12 @@ public class terrainForkJoin {
          long StartTime = System.currentTimeMillis();
          ForkJoinPool.commonPool().invoke(new forkJoinThread(terrain,1,numRows-1,numCol-1));
          long EndTime = System.currentTimeMillis();
-         System.out.println("Time taken was: "+(EndTime - StartTime)+" milliseconds");
-         System.out.println("The total number of threads is "+forkJoinThread.NUM_OF_THREADS);
-         System.out.println(forkJoinThread.COUNTER);
+         //System.out.println("Time taken was: "+(EndTime - StartTime)+" milliseconds");
+         System.out.println((EndTime - StartTime)+" "+forkJoinThread.COUNTER);
+         //System.out.println("The total number of threads is "+forkJoinThread.NUM_OF_THREADS);
+         //System.out.println(forkJoinThread.COUNTER);
          //System.out.println(forkJoinThread.results.size());
-         forkJoinThread.results.forEach((n) -> System.out.println(n));
+         //forkJoinThread.results.forEach((n) -> System.out.println(n));
       
       }
       public static void runThreads(int numOfThreads, grid[][] g, int numRows, int numCol)throws InterruptedException{
