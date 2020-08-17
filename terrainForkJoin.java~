@@ -25,7 +25,7 @@ public class terrainForkJoin {
             }
          }
          long StartTime = System.currentTimeMillis();
-         ForkJoinPool.commonPool().invoke(new forkJoinThread(terrain,1,numRows-1,numCol-1));
+         ForkJoinPool.commonPool().invoke(new forkJoinThread(terrain,0,numRows,numCol));
          long EndTime = System.currentTimeMillis();
          System.out.println("Time taken was: "+(EndTime - StartTime)+" milliseconds");
          System.out.println("The total number of threads is "+forkJoinThread.NUM_OF_THREADS);
