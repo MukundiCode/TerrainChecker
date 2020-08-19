@@ -1,0 +1,6 @@
+small_in.txt
+21.15
+med_in.txt
+47.4
+large_in.txt
+158.2
