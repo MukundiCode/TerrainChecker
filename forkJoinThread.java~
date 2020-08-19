@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.concurrent.RecursiveAction;
 public class forkJoinThread extends RecursiveAction {
 
-   static int SEQUENTIAL_CUTOFF = 10;
+   static int SEQUENTIAL_CUTOFF = 100;
    public static int NUM_OF_THREADS = 0;
    public static ArrayList<grid> results;
    public static int COUNTER = 0;
